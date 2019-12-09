@@ -1,0 +1,47 @@
+BeautyMEI - app
+version 1.0.1
+data 07/10/18
+
+ATUALIZAÇÃO:
+	banco de dados de exemplo da api de compra
+	refazer tudo
+
+INFO:
+	. 
+CRON:
+	.
+
+PERGUNTAS:
+
+NOMECLATURA:
+	active_rps
+		0 - rps ainda sem XML
+		1 - rps ja criado como um arquivo xml
+		nome de arquivo vazio = ou esta dentro dentro de 1 lote com o rps ou ja foi baixado e nao esta mais na lista
+
+	verify
+		0 - pessoa juridica
+		1 - salão
+
+
+CREATE TABLE 'categorias' (
+  `id_cat` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_cat` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_cat`)
+);
+
+CREATE TABLE 'estoque' (
+  `id_prod` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_prod` varchar(50) DEFAULT NULL,
+  `id_cat` int(11) DEFAULT NULL,
+  `qtd_prod` int(4) DEFAULT NULL,
+  `desc_prod` varchar(100) NOT NULL,
+  `tipo_prod` varchar(30),
+  `preco_prod` decimal(15,2) NOT NULL,
+  `saida_prod` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `img_prod` varchar(150) DEFAULT NULL,
+  `entrada_prod` date DEFAULT NULL,
+  `active_prod` int(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_prod`),
+  KEY `id_cat` (`id_cat`)
+);
